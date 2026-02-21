@@ -2,162 +2,317 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hungry Hub | Authentic South Indian & Fast Food</title>
-  <meta name="description"
-    content="Experience authentic South Indian cuisine and delicious fast food at Hungry Hub. Book your table online for an unforgettable dining experience." />
-  <link rel="stylesheet" href="styles.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Portal | Hungry Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background-image: linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.9)), url('hero.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-attachment: fixed !important;
+        }
+
+        .large-brand {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .large-brand i {
+            font-size: 5rem;
+            background: linear-gradient(135deg, #FFDF00 0%, #D4AF37 50%, #996515 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 4px 10px rgba(212, 175, 55, 0.4));
+        }
+
+        .large-brand h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #f4e3af 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            line-height: 1.1;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .user-portal-container {
+            padding: 120px 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            min-height: 80vh;
+        }
+
+        .auth-card {
+            background: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .auth-card h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 24px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 12px;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .auth-tab.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .auth-form {
+            display: none;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .auth-form.active {
+            display: flex;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .auth-form input:focus {
+            border-color: var(--gold);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Dashboard */
+        .user-dashboard {
+            display: none;
+        }
+
+        .user-dashboard.active {
+            display: block;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 16px;
+        }
+
+        .dashboard-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold);
+            font-size: 2.4rem;
+        }
+
+        .booking-card {
+            background: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+        }
+
+        .booking-card .status-badge {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+        }
+
+        .booking-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px;
+        }
+
+        .booking-header h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            color: var(--white);
+        }
+
+        .booking-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .booking-details strong {
+            color: var(--white);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        #authError {
+            color: #ef4444;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            height: 20px;
+        }
+
+        .empty-dashboard {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <span class="logo-icon">🍛</span>
-        <span class="logo-text">Hungry Hub</span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="reserve.html">Reserve</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="user.html">My Account</a></li>
-      </ul>
-      <a href="reserve.html" class="btn btn-nav">Book a Table</a>
-      <a href="admin.html" class="btn-admin-nav" title="Admin Login"><i class="fas fa-lock"></i> Admin</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar" style="display: none;">
+        <div class="nav-container">
+            <a href="home.html" class="logo">
+                <span class="logo-icon"><i class="fas fa-concierge-bell"></i></span>
+                <span class="logo-text">Hungry Hub</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reserve.html">Reserve</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" class="active">My Account</a></li>
+            </ul>
+            <a href="reserve.html" class="btn btn-nav">Book a Table</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="home">
-    <div class="hero-overlay"></div>
-    <img src="hero.png" alt="Hungry Hub restaurant" class="hero-bg" />
-    <div class="hero-content">
-      <p class="hero-tag animate-fade-up">Est. 2015 · Authentic South Indian & Fast Food</p>
-      <h1 class="hero-title animate-fade-up delay-1">A Flavourful Journey<br /><em>From South India</em></h1>
-      <p class="hero-subtitle animate-fade-up delay-2">
-        Where every dosa tells a story and every bite is a celebration of flavour.
-      </p>
-      <div class="hero-actions animate-fade-up delay-3">
-        <a href="reserve.html" class="btn btn-primary">Reserve Your Table</a>
-        <a href="menu.html" class="btn btn-outline">Explore Menu</a>
-      </div>
-      <div class="hero-stats animate-fade-up delay-4">
-        <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Years of Taste</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">80K+</span><span class="stat-label">Happy Guests</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Menu Items</span></div>
-      </div>
-    </div>
-    <a href="about.html" class="scroll-indicator">
-      <span>Discover</span>
-      <i class="fas fa-chevron-down"></i>
-    </a>
-  </section>
+    <div class="user-portal-container">
 
-  <!-- ===== QUICK LINKS ===== -->
-  <section class="quick-links-section">
-    <div class="container">
-      <div class="quick-links-grid">
-        <a href="about.html" class="quick-card">
-          <i class="fas fa-fire"></i>
-          <h3>Our Story</h3>
-          <p>Discover the passion behind every plate and the heart of South Indian cooking.</p>
-          <span class="quick-arrow">Explore <i class="fas fa-arrow-right"></i></span>
-        </a>
-        <a href="menu.html" class="quick-card">
-          <i class="fas fa-utensils"></i>
-          <h3>Menu</h3>
-          <p>Browse South Indian classics, sizzling fast food, and irresistible desserts.</p>
-          <span class="quick-arrow">View Menu <i class="fas fa-arrow-right"></i></span>
-        </a>
-        <a href="reserve.html" class="quick-card">
-          <i class="fas fa-calendar-check"></i>
-          <h3>Reservations</h3>
-          <p>Secure your table for a finger-licking feast at Hungry Hub.</p>
-          <span class="quick-arrow">Book Now <i class="fas fa-arrow-right"></i></span>
-        </a>
-        <a href="reviews.html" class="quick-card">
-          <i class="fas fa-quote-left"></i>
-          <h3>Guest Reviews</h3>
-          <p>Read what food lovers say about their experience at Hungry Hub.</p>
-          <span class="quick-arrow">Read Reviews <i class="fas fa-arrow-right"></i></span>
-        </a>
-      </div>
-    </div>
-  </section>
+        <div id="largeBrand" class="large-brand">
+            <i class="fas fa-concierge-bell"></i>
+            <h1>Hungry Hub</h1>
+        </div>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo">
-            <span class="logo-icon">🍛</span>
-            <span class="logo-text">Hungry Hub</span>
-          </div>
-          <p class="footer-tagline">Authentic South Indian flavours and crowd-pleasing fast food, all under one roof.
-          </p>
-          <div class="social-links">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="Zomato"><i class="fas fa-fire"></i></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Navigate</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">Our Story</a></li>
-            <li><a href="reserve.html">Reserve</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Our Menu</h4>
-          <ul>
-            <li><a href="menu.html">South Indian</a></li>
-            <li><a href="menu.html">Pizzas</a></li>
-            <li><a href="menu.html">Burgers</a></li>
-            <li><a href="menu.html">Desserts</a></li>
-            <li><a href="menu.html">Filter Coffee</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact Us</h4>
-          <ul class="contact-list">
-            <li><i class="fas fa-map-marker-alt"></i> 42, Anna Salai, Chennai, Tamil Nadu</li>
-            <li><i class="fas fa-phone"></i> +91 98400 12345</li>
-            <li><i class="fas fa-envelope"></i> hello@hungryhub.in</li>
-            <li><i class="fas fa-clock"></i> Daily: 11 AM – 11 PM</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Hungry Hub. All rights reserved.</p>
-        <div class="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+        <!-- Auth Section -->
+        <div id="authSection" class="auth-card">
+            <h2>User Portal</h2>
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Login</div>
+                <div class="auth-tab" id="tabSignup" onclick="switchAuthTab('signup')">Sign Up</div>
+            </div>
 
-  <script src="app.js"></script>
+            <form id="loginForm" class="auth-form active" onsubmit="handleLogin(event)">
+                <input type="email" id="loginEmail" placeholder="Email Address" required />
+                <input type="password" id="loginPassword" placeholder="Password" required />
+                <button type="submit" class="btn btn-primary" id="loginBtn">Sign In</button>
+            </form>
+
+            <form id="signupForm" class="auth-form" onsubmit="handleSignup(event)">
+                <input type="text" id="signupName" placeholder="Full Name" required />
+                <input type="email" id="signupEmail" placeholder="Email Address" required />
+                <input type="password" id="signupPassword" placeholder="Password (min 6 chars)" minlength="6"
+                    required />
+                <button type="submit" class="btn btn-primary" id="signupBtn">Create Account</button>
+            </form>
+
+            <div id="authError"></div>
+
+            <div style="margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+                <a href="admin.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">
+                    <i class="fas fa-lock" style="margin-right: 4px;"></i> Login as Admin
+                </a>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboardSection" class="user-dashboard">
+            <div class="dashboard-header">
+                <h2>Welcome, <span id="userName">Guest</span></h2>
+                <button class="btn btn-outline" onclick="handleLogout()">Sign Out</button>
+            </div>
+
+            <h3 style="margin-bottom: 24px; color: var(--white); font-weight: 500;">Your Reservations</h3>
+            <div id="bookingsList">
+                <div class="empty-dashboard">
+                    <i class="fas fa-calendar-times" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.5;"></i>
+                    <p>You haven't made any reservations yet.</p>
+                    <a href="reserve.html" class="btn btn-primary" style="margin-top: 16px; display: inline-block;">Book
+                        a Table</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hungry Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="user.js"></script>
 </body>
 
 </html>

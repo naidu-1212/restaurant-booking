@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard | Hungry Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
     <meta name="robots" content="noindex" />
     <link rel="stylesheet" href="styles.css" />
     <link
@@ -19,7 +20,7 @@
     <div class="admin-login-overlay" id="loginOverlay">
         <div class="admin-login-card">
             <div class="admin-login-logo">
-                <span class="logo-icon">🍛</span>
+                <span class="logo-icon"><i class="fas fa-concierge-bell"></i></span>
                 <span class="logo-text">Hungry Hub</span>
             </div>
             <h2>Admin Access</h2>
@@ -41,7 +42,7 @@
         <!-- Sidebar -->
         <aside class="admin-sidebar">
             <div class="admin-brand">
-                <span class="logo-icon">🍛</span>
+                <span class="logo-icon"><i class="fas fa-concierge-bell"></i></span>
                 <span class="logo-text">Hungry Hub</span>
             </div>
             <nav class="admin-nav">
@@ -56,7 +57,7 @@
                 </a>
             </nav>
             <div class="admin-sidebar-footer">
-                <a href="index.html" class="admin-nav-link">
+                <a href="home.html" class="admin-nav-link">
                     <i class="fas fa-external-link-alt"></i> View Site
                 </a>
                 <button class="admin-logout" id="logoutBtn">
@@ -123,7 +124,7 @@
                 <!-- Quick Table View (Today) -->
                 <div class="admin-card" style="margin-top:32px;">
                     <div class="admin-card-head">
-                        <h3><i class="fas fa-calendar-day"></i> Today's Bookings</h3>
+                        <h3><i class="fas fa-clock"></i> Recent Bookings</h3>
                         <button class="btn btn-sm" id="goToBookings">View All <i
                                 class="fas fa-arrow-right"></i></button>
                     </div>
@@ -143,7 +144,7 @@
                             </thead>
                             <tbody id="todayTableBody"></tbody>
                         </table>
-                        <p class="empty-state" id="todayEmpty" style="display:none;">No bookings for today yet.</p>
+                        <p class="empty-state" id="todayEmpty" style="display:none;">No recent bookings found.</p>
                     </div>
                 </div>
             </section><!-- end view-dashboard -->

@@ -95,6 +95,10 @@ function handleLogout() {
     document.getElementById('loginForm').reset();
     document.getElementById('signupForm').reset();
     switchAuthTab('login');
+
+    // Hide navbar completely and show large branding
+    if (document.getElementById('navbar')) document.getElementById('navbar').style.display = 'none';
+    if (document.getElementById('largeBrand')) document.getElementById('largeBrand').style.display = 'block';
 }
 
 function checkUserAuth() {
@@ -108,6 +112,13 @@ async function showDashboard(user) {
     document.getElementById('authSection').style.display = 'none';
     document.getElementById('dashboardSection').style.display = 'block';
     document.getElementById('userName').textContent = user.name;
+
+    // Show full navbar and hide large branding
+    if (document.getElementById('navbar')) document.getElementById('navbar').style.display = 'block';
+    if (document.getElementById('navLinks')) document.getElementById('navLinks').style.display = '';
+    if (document.getElementById('navActionBtn')) document.getElementById('navActionBtn').style.display = '';
+    if (document.getElementById('hamburger')) document.getElementById('hamburger').style.display = '';
+    if (document.getElementById('largeBrand')) document.getElementById('largeBrand').style.display = 'none';
 
     await fetchAndRenderBookings(user.email);
 }

@@ -98,8 +98,8 @@ async function renderDashboard() {
     const pendingEl = document.getElementById('statPending');
     if (pendingEl) pendingEl.textContent = stats.pending;
 
-    const todayBookings = all.filter(b => b.date === today);
-    renderBookingsTable(todayBookings, 'todayTableBody', 'todayEmpty');
+    const recentBookings = all.slice(0, 5);
+    renderBookingsTable(recentBookings, 'todayTableBody', 'todayEmpty');
 }
 
 /* ── Status Badge & Action Buttons ── */

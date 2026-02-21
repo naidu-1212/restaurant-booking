@@ -1,23 +1,23 @@
 {
   "bookings": [
     {
-      "bookingRef": "HH649558",
+      "bookingRef": "HH182780",
       "firstName": "naidu",
-      "lastName": "naidu",
+      "lastName": "ww",
       "email": "naidu@gmail.com",
       "phone": "8527419634",
       "date": "2026-02-25",
       "dateFormatted": "Wednesday, 25 February 2026",
-      "time": "11:30 AM",
-      "guests": 2,
-      "occasion": "anniversary",
+      "time": "7:30 PM",
+      "guests": 7,
+      "occasion": "",
       "requests": "",
       "advancePerPerson": 199,
-      "totalAdvance": 398,
-      "status": "confirmed",
-      "tableId": 1,
-      "tableLabel": "T01",
-      "bookedAt": "2026-02-21T22:40:59.770Z"
+      "totalAdvance": 1393,
+      "status": "completed",
+      "tableId": null,
+      "tableLabel": "TBD",
+      "bookedAt": "2026-02-21T23:06:34.328Z"
     }
   ]
 }

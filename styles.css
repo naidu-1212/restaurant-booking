@@ -231,19 +231,33 @@ ul {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  text-decoration: none;
+  transition: transform var(--trans);
+}
+
+.logo:hover {
+  transform: scale(1.03);
 }
 
 .logo-icon {
-  color: var(--gold);
-  font-size: 1.1rem;
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, #FFDF00 0%, #D4AF37 50%, #996515 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 4px 6px rgba(212, 175, 55, 0.4));
 }
 
 .logo-text {
-  font-family: var(--ff-serif);
-  font-size: 1.35rem;
-  color: var(--white);
-  font-weight: 400;
+  font-family: 'Playfair Display', var(--ff-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 0%, #f4e3af 50%, #d4af37 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 1.5px;
   white-space: nowrap;
 }
 

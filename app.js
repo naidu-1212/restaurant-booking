@@ -3,6 +3,25 @@
    South Indian & Fast Food Multi-page version
    =================================================== */
 
+// --- Global Authentication Check ---
+(function () {
+  const protectedPages = ['home.html', 'menu.html', 'about.html', 'reviews.html', 'contact.html', 'reserve.html', 'payment.html'];
+  const currentPath = window.location.pathname;
+  // Check if we are on a protected page, defaults to home if just slash
+  const isProtected = protectedPages.some(p => currentPath.endsWith('/' + p) || currentPath.endsWith(p)) || currentPath.endsWith('/');
+
+  if (isProtected) {
+    if (!sessionStorage.getItem('hhUserAuth')) {
+      // Not logged in.
+      // If the root path was requested, we should ensure they go to index.html explicitly
+      if (!currentPath.endsWith('index.html')) {
+        console.warn('Unauthorized access blocked. Redirecting to login.');
+        window.location.href = 'index.html';
+      }
+    }
+  }
+})();
+
 /* ── Navbar hamburger ── */
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
@@ -151,7 +170,7 @@ if (form) {
   const userData = sessionStorage.getItem('hhUserAuth');
   if (!userData) {
     alert("Please sign in or create an account to reserve a table.");
-    window.location.href = 'user.html';
+    window.location.href = 'index.html';
   } else {
     try {
       const user = JSON.parse(userData);
