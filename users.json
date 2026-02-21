@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "email": "naidu@gmail.com",
+      "password": "naidu123",
+      "name": "naidu",
+      "createdAt": "2026-02-21T22:39:11.242Z"
+    }
+  ]
+}

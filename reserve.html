@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve a Table | Hungry Hub</title>
+    <meta name="description"
+        content="Book your table at Hungry Hub. Reserve online for authentic South Indian dining and fast food." />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🍛</span>
+                <span class="logo-text">Hungry Hub</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reserve.html" class="active">Reserve</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="reserve.html" class="btn btn-nav">Book a Table</a>
+            <a href="admin.html" class="btn-admin-nav" title="Admin Login"><i class="fas fa-lock"></i> Admin</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HERO ===== -->
+    <section class="page-hero page-hero--short">
+        <div class="page-hero-overlay"></div>
+        <img src="hero.png" alt="Hungry Hub" class="page-hero-bg" />
+        <div class="page-hero-content">
+            <p class="section-tag animate-fade-up">Reservations</p>
+            <h1 class="page-hero-title animate-fade-up delay-1">Reserve Your<br /><em>Table</em></h1>
+            <p class="page-hero-sub animate-fade-up delay-2">We look forward to welcoming you at Hungry Hub.</p>
+        </div>
+    </section>
+
+    <!-- ===== BOOKING ===== -->
+    <section class="booking-section section" id="booking">
+        <div class="container">
+            <div class="booking-wrapper">
+                <div class="booking-left">
+                    <p class="section-tag">Reservations</p>
+                    <h2 class="section-title">Reserve Your Table</h2>
+                    <p class="booking-sub">
+                        Fill in the form and our team will confirm your reservation within a few hours. Come hungry!
+                    </p>
+                    <div class="booking-info">
+                        <div class="binfo-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Opening Hours</strong>
+                                <span>Mon–Fri: 11:00 AM – 10:30 PM</span>
+                                <span>Sat–Sun: 10:00 AM – 11:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="binfo-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Phone</strong>
+                                <span>+91 98400 12345</span>
+                            </div>
+                        </div>
+                        <div class="binfo-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <span>hello@hungryhub.in</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-right">
+
+                    <!-- Pre-selected table banner (shown when arriving from tables.html) -->
+                    <div id="selectedTableBanner" style="display:none;" class="selected-table-banner">
+                        <div class="stb-inner">
+                            <i class="fas fa-chair"></i>
+                            <div class="stb-text">
+                                <strong id="stbLabel">Table T01</strong>
+                                <span id="stbMeta">2-person · Indoor</span>
+                            </div>
+                            <span class="stb-badge">Selected</span>
+                        </div>
+                        <p class="stb-hint"><i class="fas fa-lock"></i> This table is reserved for you. Fill in your
+                            details below.</p>
+                    </div>
+
+                    <form class="booking-form" id="bookingForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name <span class="req">*</span></label>
+                                <input type="text" id="firstName" name="firstName" placeholder="Arjun" required />
+                                <span class="error-msg" id="err-firstName"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name <span class="req">*</span></label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Kumar" required />
+                                <span class="error-msg" id="err-lastName"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="req">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="arjun@example.com" required />
+                                <span class="error-msg" id="err-email"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span class="req">*</span></label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91 98400 12345" required />
+                                <span class="error-msg" id="err-phone"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Date <span class="req">*</span></label>
+                                <input type="date" id="date" name="date" required />
+                                <span class="error-msg" id="err-date"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="guests">Number of Guests <span class="req">*</span></label>
+                                <select id="guests" name="guests" required>
+                                    <option value="">Select guests</option>
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5 Guests</option>
+                                    <option value="6">6 Guests</option>
+                                    <option value="7">7 Guests</option>
+                                    <option value="8">8+ Guests (call us)</option>
+                                </select>
+                                <span class="error-msg" id="err-guests"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Time <span class="req">*</span></label>
+                            <div class="time-slots" id="timeSlots"></div>
+                            <span class="error-msg" id="err-time"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="occasion">Special Occasion</label>
+                            <select id="occasion" name="occasion">
+                                <option value="">None</option>
+                                <option value="birthday">Birthday</option>
+                                <option value="anniversary">Anniversary</option>
+                                <option value="family">Family Gathering</option>
+                                <option value="business">Business Lunch</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="requests">Special Requests</label>
+                            <textarea id="requests" name="requests" rows="3"
+                                placeholder="Dietary restrictions, seating preferences, etc."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                            <span id="btnText">Confirm Reservation</span>
+                            <i class="fas fa-arrow-right" id="btnIcon"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SUCCESS MODAL ===== -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
+            <h3>Reservation Confirmed!</h3>
+            <p id="modalMessage">Thank you! Your table has been reserved. We've sent a confirmation to your email. We
+                look forward to feeding you!</p>
+            <button class="btn btn-primary" id="modalClose">Great, Thank You! 🍛</button>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">🍛</span>
+                        <span class="logo-text">Hungry Hub</span>
+                    </div>
+                    <p class="footer-tagline">Authentic South Indian flavours and crowd-pleasing fast food, all under
+                        one roof.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Zomato"><i class="fas fa-fire"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="reserve.html">Reservations</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Menu</h4>
+                    <ul>
+                        <li><a href="menu.html">South Indian</a></li>
+                        <li><a href="menu.html">Pizzas</a></li>
+                        <li><a href="menu.html">Burgers</a></li>
+                        <li><a href="menu.html">Desserts</a></li>
+                        <li><a href="menu.html">Filter Coffee</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-map-marker-alt"></i> 42, Anna Salai, Chennai, Tamil Nadu</li>
+                        <li><i class="fas fa-phone"></i> +91 98400 12345</li>
+                        <li><i class="fas fa-envelope"></i> hello@hungryhub.in</li>
+                        <li><i class="fas fa-clock"></i> Daily: 11 AM – 11 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hungry Hub. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Pre-fill from tables.html URL params — runs after all scripts loaded
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const tableId = params.get('tableId');
+            if (!tableId) return;
+
+            const label = params.get('tableLabel') || ('T' + tableId.padStart(2, '0'));
+            const capacity = params.get('capacity') || '2';
+            const section = params.get('section') || 'Indoor';
+            const pDate = params.get('date');
+            const pTime = params.get('time');
+
+            // Store for form submission (app.js reads these)
+            sessionStorage.setItem('preSelectedTableId', tableId);
+            sessionStorage.setItem('preSelectedTableLabel', label);
+
+            // Show banner
+            var banner = document.getElementById('selectedTableBanner');
+            if (banner) {
+                banner.style.display = 'block';
+                document.getElementById('stbLabel').textContent = 'Table ' + label;
+                document.getElementById('stbMeta').textContent = capacity + '-person \u00b7 ' + section;
+            }
+
+            // Pre-fill date
+            var dateEl = document.getElementById('date');
+            if (dateEl && pDate) dateEl.value = pDate;
+
+            // Pre-fill guests
+            var guestsEl = document.getElementById('guests');
+            if (guestsEl && parseInt(capacity) <= 6) guestsEl.value = capacity;
+
+            // Pre-select time slot
+            if (pTime) {
+                setTimeout(function () {
+                    var btn = Array.from(document.querySelectorAll('.time-slot'))
+                        .find(function (b) { return b.textContent.trim() === pTime; });
+                    if (btn) btn.click();
+                }, 80);
+            }
+        })();
+    </script>
+</body>
+
+</html>

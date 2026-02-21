@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advance Payment | Hungry Hub</title>
+    <meta name="description" content="Pay your advance booking amount at Hungry Hub to secure your table." />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🍛</span>
+                <span class="logo-text">Hungry Hub</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reserve.html" class="active">Reserve</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="reserve.html" class="btn btn-nav">Book a Table</a>
+            <a href="admin.html" class="btn-admin-nav" title="Admin Login"><i class="fas fa-lock"></i> Admin</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== PAYMENT PAGE ===== -->
+    <main class="payment-page">
+        <div class="container">
+
+            <!-- Back link -->
+            <a href="reserve.html" class="payment-back" id="backLink">
+                <i class="fas fa-chevron-left"></i> Back to Reservation
+            </a>
+
+            <div class="payment-header">
+                <p class="section-tag">Secure Your Spot</p>
+                <h1 class="payment-title">Complete Advance Payment</h1>
+                <p class="payment-subtitle">A refundable advance of <strong>₹199 per guest</strong> is required to
+                    confirm your table. The amount will be adjusted in your final bill.</p>
+            </div>
+
+            <div class="payment-grid">
+
+                <!-- LEFT: Booking Summary -->
+                <div class="booking-summary-card">
+                    <div class="summary-head">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Booking Summary</h3>
+                    </div>
+                    <div class="summary-body" id="summaryBody">
+                        <!-- populated by JS -->
+                    </div>
+                    <div class="summary-amount" id="summaryAmount">
+                        <!-- populated by JS -->
+                    </div>
+                    <div class="secure-badge">
+                        <i class="fas fa-lock"></i>
+                        <span>100% Secured & Refundable</span>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Payment Form -->
+                <div class="payment-form-card">
+
+                    <!-- Payment method tabs -->
+                    <div class="pay-method-tabs">
+                        <button class="pay-tab active" data-method="upi" id="tab-upi">
+                            <i class="fas fa-mobile-alt"></i> UPI
+                        </button>
+                        <button class="pay-tab" data-method="card" id="tab-card">
+                            <i class="fas fa-credit-card"></i> Card
+                        </button>
+                        <button class="pay-tab" data-method="netbanking" id="tab-netbanking">
+                            <i class="fas fa-university"></i> Net Banking
+                        </button>
+                    </div>
+
+                    <!-- UPI Panel -->
+                    <div class="pay-panel active" id="panel-upi">
+                        <div class="upi-logos">
+                            <span class="upi-logo">GPay</span>
+                            <span class="upi-logo">PhonePe</span>
+                            <span class="upi-logo">Paytm</span>
+                            <span class="upi-logo">BHIM</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="upiId">UPI ID <span class="req">*</span></label>
+                            <input type="text" id="upiId" placeholder="yourname@upi" />
+                            <span class="error-msg" id="err-upi"></span>
+                        </div>
+                        <p class="pay-info">Enter your UPI ID and we'll send a payment request to your app.</p>
+                    </div>
+
+                    <!-- Card Panel -->
+                    <div class="pay-panel" id="panel-card">
+                        <div class="card-icons">
+                            <span class="card-icon visa">VISA</span>
+                            <span class="card-icon master">MC</span>
+                            <span class="card-icon rupay">RuPay</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardNum">Card Number <span class="req">*</span></label>
+                            <input type="text" id="cardNum" placeholder="1234  5678  9012  3456" maxlength="19" />
+                            <span class="error-msg" id="err-cardNum"></span>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cardExpiry">Expiry Date <span class="req">*</span></label>
+                                <input type="text" id="cardExpiry" placeholder="MM / YY" maxlength="7" />
+                                <span class="error-msg" id="err-cardExpiry"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardCvv">CVV <span class="req">*</span></label>
+                                <input type="password" id="cardCvv" placeholder="•••" maxlength="4" />
+                                <span class="error-msg" id="err-cardCvv"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardName">Name on Card <span class="req">*</span></label>
+                            <input type="text" id="cardName" placeholder="Arjun Kumar" />
+                            <span class="error-msg" id="err-cardName"></span>
+                        </div>
+                    </div>
+
+                    <!-- Net Banking Panel -->
+                    <div class="pay-panel" id="panel-netbanking">
+                        <div class="form-group">
+                            <label for="bankSelect">Select Your Bank <span class="req">*</span></label>
+                            <select id="bankSelect">
+                                <option value="">Choose a bank</option>
+                                <option value="sbi">State Bank of India (SBI)</option>
+                                <option value="hdfc">HDFC Bank</option>
+                                <option value="icici">ICICI Bank</option>
+                                <option value="axis">Axis Bank</option>
+                                <option value="kotak">Kotak Mahindra Bank</option>
+                                <option value="ubi">Union Bank of India</option>
+                                <option value="bob">Bank of Baroda</option>
+                                <option value="pnb">Punjab National Bank</option>
+                                <option value="other">Other Bank</option>
+                            </select>
+                            <span class="error-msg" id="err-bank"></span>
+                        </div>
+                        <p class="pay-info">You will be redirected to your bank's secure net banking portal to complete
+                            the payment.</p>
+                    </div>
+
+                    <!-- Pay Button -->
+                    <button class="btn btn-primary btn-full pay-btn" id="payBtn">
+                        <span id="payBtnText">Pay Advance</span>
+                        <i class="fas fa-arrow-right" id="payBtnIcon"></i>
+                    </button>
+
+                    <div class="payment-trust">
+                        <span><i class="fas fa-shield-alt"></i> 256-bit SSL Secured</span>
+                        <span><i class="fas fa-undo"></i> 100% Refundable</span>
+                        <span><i class="fas fa-bolt"></i> Instant Confirmation</span>
+                    </div>
+                </div>
+
+            </div><!-- end payment-grid -->
+        </div>
+    </main>
+
+    <!-- ===== SUCCESS MODAL ===== -->
+    <div class="modal-overlay" id="paymentSuccessModal">
+        <div class="modal payment-success-modal">
+            <div class="modal-icon success-pulse"><i class="fas fa-check-circle"></i></div>
+            <div class="success-ref" id="successRef"></div>
+            <h3>Booking Confirmed! 🎉</h3>
+            <p id="successMsg">Your table has been successfully reserved and advance payment received.</p>
+            <div class="success-details" id="successDetails"></div>
+            <div class="modal-actions">
+                <a href="index.html" class="btn btn-primary" id="goHomeBtn">Back to Home <i class="fas fa-home"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">🍛</span>
+                        <span class="logo-text">Hungry Hub</span>
+                    </div>
+                    <p class="footer-tagline">Authentic South Indian flavours and crowd-pleasing fast food, all under
+                        one roof.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Zomato"><i class="fas fa-fire"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="reserve.html">Reservations</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Menu</h4>
+                    <ul>
+                        <li><a href="menu.html">South Indian</a></li>
+                        <li><a href="menu.html">Pizzas</a></li>
+                        <li><a href="menu.html">Burgers</a></li>
+                        <li><a href="menu.html">Desserts</a></li>
+                        <li><a href="menu.html">Filter Coffee</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-map-marker-alt"></i> 42, Anna Salai, Chennai, Tamil Nadu</li>
+                        <li><i class="fas fa-phone"></i> +91 98400 12345</li>
+                        <li><i class="fas fa-envelope"></i> hello@hungryhub.in</li>
+                        <li><i class="fas fa-clock"></i> Daily: 11 AM – 11 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hungry Hub. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script src="payment.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "hungry-hub",
+  "version": "1.0.0",
+  "description": "Hungry Hub Restaurant Booking Website",
+  "scripts": {
+    "dev": "node server.js",
+    "server": "node server.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "serve": "^14.2.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.3"
+  }
+}
