@@ -3,7 +3,7 @@
    All operations go via the REST API (server.js)
    =================================================== */
 
-const API = 'http://localhost:3001/api';
+const API = '/api';
 
 /* ── Table Configuration (client-side, for UI helpers) ── */
 const HH_TABLES = [

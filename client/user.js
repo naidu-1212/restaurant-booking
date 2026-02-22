@@ -2,7 +2,7 @@
    user.js – Hungry Hub User Dashboard (async/DB)
    =================================================== */
 
-const API = 'http://localhost:3001/api';
+const API = '/api';
 const SESSION_USER_KEY = 'hhUserAuth';
 
 document.addEventListener('DOMContentLoaded', () => {
