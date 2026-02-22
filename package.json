@@ -4,8 +4,7 @@
   "description": "Hungry Hub Restaurant Booking Website",
   "scripts": {
     "start": "node server/server.js",
-    "dev": "node server/server.js",
-    "build": "npm install --prefix client && npm run build --prefix client"
+    "dev": "node server/server.js"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
