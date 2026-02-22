@@ -5,6 +5,7 @@
 
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const {
     getAllBookings,
     getBookingByRef,
@@ -21,7 +22,7 @@ const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 /* ─────────────────────────────────────────────────────
    Table config (mirrors data.js HH_TABLES)
@@ -244,6 +245,10 @@ app.get('/api/seed', (_req, res) => {
 
 // Health check
 app.get('/api/health', (_req, res) => res.json({ status: 'ok', db: 'bookings.db' }));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
 
 /* ─────────────────────────────────────────────────────
    START

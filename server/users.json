@@ -5,6 +5,12 @@
       "password": "naidu123",
       "name": "naidu",
       "createdAt": "2026-02-21T22:39:11.242Z"
+    },
+    {
+      "email": "sai123@gmail.com",
+      "password": "Sai@123123",
+      "name": "sai",
+      "createdAt": "2026-02-21T23:45:07.784Z"
     }
   ]
 }
